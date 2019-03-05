@@ -69,11 +69,12 @@ ENV \
   TAIGA_EMAIL_PASS="" \
   TAIGA_SKIP_DB_CHECK="" \
   TAIGA_DB_CHECK_ONLY="" \
-  TAIGA_SLEEP="0"
+  TAIGA_SLEEP="0" \
+  PYTHONUNBUFFERED="true"
 
 
 ### Container configuration
 EXPOSE 80 443
 VOLUME /usr/src/taiga-back/media
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "--workers", "4", "--timeout", "30", "-b", "0.0.0.0:8000", "taiga.wsgi"]
