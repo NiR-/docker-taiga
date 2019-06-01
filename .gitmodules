@@ -1,7 +1,7 @@
 [submodule "taiga-back"]
 	path = taiga-back
 	url = https://github.com/taigaio/taiga-back.git
-	branch = 3.4.1
+	branch = 4.2.5
 [submodule "taiga-front-dist"]
 	path = taiga-front-dist
 	url = https://github.com/taigaio/taiga-front-dist.git
