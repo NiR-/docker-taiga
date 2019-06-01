@@ -6,3 +6,6 @@
 	path = taiga-front-dist
 	url = https://github.com/taigaio/taiga-front-dist.git
 	branch = 3.4.2-stable
+[submodule "taiga-front"]
+	path = taiga-front
+	url = ssh://git@github.com/taigaio/taiga-front
