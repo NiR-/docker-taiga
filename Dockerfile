@@ -39,12 +39,11 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 ### Setup taiga
 WORKDIR /usr/src/taiga-back
-RUN \
-  echo "### Symlink taiga configuration to legacy config dir" \
+RUN echo "### Symlink taiga configuration to legacy config dir" \
   && mkdir -p /usr/src/taiga-front-dist/dist/js/ \
   && ln -s /taiga/conf.json /usr/src/taiga-front-dist/dist/js/conf.json \
-  \
   && echo "### Install required python dependencies" \
+  && sed -i 's/psycopg2-binary==.*/psycopg2==2.8.2/' requirements.txt \
   && pip install --no-cache-dir -r requirements.txt
 
 
