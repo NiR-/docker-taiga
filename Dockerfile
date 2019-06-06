@@ -1,12 +1,12 @@
-FROM python:3.5-jessie
+FROM python:3.6-jessie
 MAINTAINER Benjamin Hutchins <ben@hutchins.co>
 
 
 ### Setup system
-ENV \
-  DEBIAN_FRONTEND="noninteractive" \
+ENV DEBIAN_FRONTEND="noninteractive" \
   LANG="en_US.UTF-8" \
   LC_ALL="en_US.UTF-8"
+
 RUN \
   echo "### Setup system packages" \
   && apt-get update \
@@ -16,14 +16,12 @@ RUN \
       ca-certificates \
       nginx \
   && rm -rf /var/lib/apt/lists/* \
-  \
   && echo "### Setup system locale" \
   && echo "LANGUAGE=en"        >  /etc/default/locale \
   && echo "LANG=en_US.UTF-8"   >> /etc/default/locale \
   && echo "LC_ALL=en_US.UTF-8" >> /etc/default/locale \
   && echo "en_US.UTF-8 UTF-8"  >  /etc/locale.gen \
   && locale-gen \
-  \
   && echo "### Setup nginx access/error log to stdout/stderr" \
   && ln -sf /dev/stdout /var/log/nginx/access.log \
   && ln -sf /dev/stderr /var/log/nginx/error.log
